@@ -17,7 +17,12 @@ public class CountryNameController {
 
     @RequestMapping(value="/start/{letter}",produces = {"application/json"})
     public ResponseEntity<?>getCountryWithLetter(@PathVariable char letter){
-        ArrayList<Country> tempCountry = JavacountriesApplication.myCountrylist.findCountries(c->c.getName().toUpperCase().charAt(0)==Character.toUpperCase(letter));
-        return new ResponseEntity<>(tempCountry, HttpStatus.OK);
+        ArrayList<Country> countriesThatBeginWith = JavacountriesApplication.myCountrylist.findCountries(c->c.getName().toUpperCase().charAt(0)==Character.toUpperCase(letter));
+        return new ResponseEntity<>(countriesThatBeginWith, HttpStatus.OK);
+    }
+    @RequestMapping(value="/size/{number}",produces = {"application/json"})
+    public ResponseEntity<?>getCountriesWithCharLength(@PathVariable int number){
+        ArrayList<Country>getCountriesWithGivenLength = JavacountriesApplication.myCountrylist.findCountries(c->c.getName().length() >= number);
+        return new ResponseEntity<>(getCountriesWithGivenLength, HttpStatus.OK);
     }
 }
