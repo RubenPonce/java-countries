@@ -6,8 +6,6 @@ public class Country {
     private int landAreaKm;
     private int medianAge;
 
-
-
     public Country(String name, int population, int landAreaKm, int medianAge) {
         this.name =
                 name;
@@ -15,6 +13,7 @@ public class Country {
                 population;
         this.landAreaKm =
                 landAreaKm;
+        this.medianAge = medianAge;
     }
 
     public String getName() {
